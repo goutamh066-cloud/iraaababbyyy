@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iraaa babbyy ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&family=Playfair+Display:wght@600&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+margin:0;
+font-family:'Poppins',sans-serif;
+background:linear-gradient(135deg,#fff8f0,#ffdce6);
+color:#b03060;
+overflow-x:hidden;
+}
+
+/* HERO */
+
+.hero{
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+height:100vh;
+padding:20px;
+position:relative;
+}
+
+h1{
+font-family:'Dancing Script',cursive;
+font-size:60px;
+margin:0;
+color:#c94f7c;
+}
+
+.name{
+font-family:'Playfair Display',serif;
+font-size:38px;
+margin-top:10px;
+border-right:2px solid #c94f7c;
+white-space:nowrap;
+overflow:hidden;
+animation:typing 3s steps(20), blink 0.7s infinite alternate;
+}
+
+@keyframes typing{
+from{width:0}
+to{width:280px}
+}
+
+@keyframes blink{
+from{border-color:#c94f7c}
+to{border-color:transparent}
+}
+
+.subtitle{
+margin-top:20px;
+font-size:18px;
+opacity:0.8;
+}
+
+button{
+margin-top:20px;
+padding:12px 25px;
+border:none;
+border-radius:30px;
+background:#ffb6c1;
+color:#8b004f;
+font-size:16px;
+cursor:pointer;
+transition:0.3s;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+button:hover{
+transform:scale(1.07);
+}
+
+.section{
+padding:60px 20px;
+text-align:center;
+}
+
+.counter-box{
+background:#fff0f5;
+padding:30px;
+border-radius:20px;
+display:inline-block;
+}
+
+/* Popup */
+
+.popup{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(255,240,245,0.95);
+display:none;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+text-align:center;
+z-index:1000;
+}
+
+.popup-content{
+background:white;
+padding:30px;
+border-radius:20px;
+color:#c94f7c;
+position:relative;
+}
+
+/* Heart Explosion */
+
+.heart-explosion{
+position:fixed;
+font-size:28px;
+animation:explode 1.5s ease-out forwards;
+}
+
+@keyframes explode{
+0%{transform:scale(0);opacity:1;}
+100%{transform:scale(4);opacity:0;}
+}
+
+/* Floating Cats */
+
+.cat-float{
+position:fixed;
+font-size:35px;
+animation:floatCat 12s linear infinite;
+opacity:0.8;
+}
+
+@keyframes floatCat{
+0%{transform:translateY(100vh) rotate(0deg);}
+100%{transform:translateY(-10vh) rotate(360deg);}
+}
+
+/* Hero Cat */
+
+.cat-hero{
+position:absolute;
+left:5%;
+bottom:5%;
+width:120px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="hero">
+<h1>Happy Kiss Day 💋</h1>
+<div class="name">Iraaa 💖</div>
+<div class="subtitle">
+Soft kisses. Love. Care. Babbyy hamesha dil tu jaan tu 😌
+</div>
+
+<button onclick="scrollToSection()">Enter Love Portal</button>
+
+<img class="cat-hero" src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif">
+</div>
+
+<div class="section">
+<h2>Kiss Counter 💋</h2>
+<div class="counter-box">
+<h1 id="count">0</h1>
+<button onclick="addKiss()">Give Kiss 😘</button>
+</div>
+</div>
+
+<div class="section">
+<h2>Important Question 💍</h2>
+<p>Will you stay forever with this bewakoof?</p>
+<button onclick="showPopup()">Answer Carefully 😏</button>
+</div>
+
+<div class="popup" id="popup">
+<div class="popup-content">
+<h2>Forever with Goutam? 💍</h2>
+<button id="yesBtn" onclick="yesForever()">YES 😍❤️</button>
+<button id="noBtn" onclick="changeNo()">NO 😼</button>
+</div>
+</div>
+
+<script>
+
+let kisses=0;
+let noClicks=0;
+let yesSize=1;
+
+const noTexts=[
+"Really? 😼",
+"Ohhh really?",
+"Are you sure?",
+"Think again.",
+"Wrong answer.",
+"Try again pookie.",
+"That button is broken.",
+"You can’t escape.",
+"Just press YES 😌"
+];
+
+function scrollToSection(){
+window.scrollTo({top:window.innerHeight,behavior:'smooth'});
+}
+
+function addKiss(){
+kisses++;
+document.getElementById("count").innerText=kisses;
+}
+
+function showPopup(){
+document.getElementById("popup").style.display="flex";
+}
+
+function yesForever(){
+document.querySelector(".popup-content").innerHTML =
+"<h1>I knew it 😌💘</h1><p>I know you can't live without me babbyyy 💋 Lots of lovesss and kissesssssss 💋💋💋</p>";
+launchHearts();
+}
+
+/* Heart Explosion */
+
+function launchHearts(){
+for(let i=0;i<50;i++){
+let heart=document.createElement("div");
+heart.classList.add("heart-explosion");
+heart.innerHTML="💖";
+heart.style.left=Math.random()*100+"vw";
+heart.style.top=Math.random()*100+"vh";
+document.body.appendChild(heart);
+setTimeout(()=>{heart.remove();},1500);
+}
+}
+
+/* NO Button Chaos */
+
+function changeNo(){
+
+let noBtn=document.getElementById("noBtn");
+let yesBtn=document.getElementById("yesBtn");
+
+noBtn.innerText=noTexts[noClicks % noTexts.length];
+noClicks++;
+
+yesSize+=0.3;
+yesBtn.style.transform="scale("+yesSize+")";
+
+noBtn.style.position="absolute";
+noBtn.style.left=Math.random()*60+"%";
+noBtn.style.top=Math.random()*60+"%";
+
+spawnKnifeCat(noBtn);
+}
+
+/* Knife Cat Chase */
+
+function spawnKnifeCat(target){
+
+let cat=document.createElement("div");
+cat.innerHTML="🔪🐱";
+cat.style.position="fixed";
+cat.style.fontSize="50px";
+cat.style.left="0px";
+cat.style.top="80%";
+cat.style.transition="all 1s linear";
+
+document.body.appendChild(cat);
+
+let rect=target.getBoundingClientRect();
+
+setTimeout(()=>{
+cat.style.left=rect.left+"px";
+cat.style.top=rect.top+"px";
+},100);
+
+setTimeout(()=>{
+cat.remove();
+},1500);
+}
+
+/* Floating Chaos Cats */
+
+function spawnChaosCat(){
+const cats=["😾","🐱","💘","💖🐱","😡🐱"];
+let cat=document.createElement("div");
+cat.classList.add("cat-float");
+cat.innerHTML=cats[Math.floor(Math.random()*cats.length)];
+cat.style.left=Math.random()*100+"vw";
+document.body.appendChild(cat);
+setTimeout(()=>{cat.remove();},12000);
+}
+
+setInterval(spawnChaosCat,5000);
+
+</script>
+
+</body>
+</html>
